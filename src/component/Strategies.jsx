@@ -28,12 +28,9 @@ function Strategies() {
     }, []);
 
     return (
-
-
         <div className="container">
             <div className="col">
-                <div className="row">
-                  
+                <div className="row">                 
                     
                     <form onSubmit={submit}>
                         <div className="test">
@@ -46,7 +43,7 @@ function Strategies() {
                             <textarea onChange={(e) => setDescription(e.target.value)}
                                 className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary">Subbmit</button>
                     </form>
                      </div></div>
             <div className="row">
