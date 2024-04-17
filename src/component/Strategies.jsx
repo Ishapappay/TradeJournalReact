@@ -1,37 +1,41 @@
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 import { createStrategy } from '../services/strategy-service';
-import strategy from "../css/Strategy.css"
 import { getAllStrategy } from '../services/strategy-service';
 
 function Strategies() {
-    debugger
-    const [StrategyName, setStrategyName] = useState("")
+     const [StrategyName, setStrategyName] = useState("")
     const [Description, setDescription] = useState("")
 
     async function submit(e) {
         e.preventDefault()
         let newStrategy = { Name: StrategyName, Description };
         await createStrategy(newStrategy);
+        fetchData();
+        setStrategyName("");
+        setDescription("");
     }
 
     const [strategies, setStrategies] = useState([]);
 
+    async function fetchData() {
+        try {
+            const result = await getAllStrategy();
+            setStrategies(result);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    } 
+
     useEffect(() => {
-        async function fetchData() {
-            try {                
-                const result = await getAllStrategy();
-                setStrategies(result);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        } fetchData();
+       fetchData();
+       
     }, []);
 
     return (
         <div className="container">
             <div className="col">
-                <div className="row">                 
-                    
+                <div className="row">
+
                     <form onSubmit={submit}>
                         <div className="test">
                             <label htmlFor="Name" className="form-label"  >Strategy Name</label>
@@ -43,24 +47,28 @@ function Strategies() {
                             <textarea onChange={(e) => setDescription(e.target.value)}
                                 className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
+
                         <button type="submit" className="btn btn-primary">Submit</button>
+                   
                     </form>
-                     </div></div>
+                </div></div>
             <div className="row">
                 <div className="col">
-                <table>
+                    <table className="table">
                         <thead>
                             <tr>
-                                <th>Column 1</th>
-                                <th>Column 2</th>
+                                 <th>Name</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Data 1</td>
-                                <td>Data 2</td>
-                            </tr>
-                        </tbody>
+                                {strategies.map(strategy => (
+                                    <tr key={strategy.id}>
+                                         <td>{strategy.name}</td>
+                                        <td>{strategy.Description}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
                     </table>
                 </div></div>
 

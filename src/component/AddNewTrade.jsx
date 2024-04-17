@@ -8,28 +8,38 @@ function AddNewTrade() {
     const [strategies, setStrategies] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
-            try {                
+        async function fetchStartegies() {
+            try {
                 const result = await getAllStrategy();
                 setStrategies(result);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
-        } fetchData();
+        } fetchStartegies();
     }, []);
-   
+
     function handleChange(e) {
         debugger
         setSelects(e.target.value);
     }
+
+    async function saveTrade(e) {
+        // e.preventDefault()
+        // let newDescription = { Name: strategyName, description: strategydescription };
+        // await createStrategy(newDescription);
+        // fetchStrategies();
+        // setstategydescription("");
+        // setStrategyName("");
+    }
+
     return (
         <div>
             Add New Trade
 
             <br></br>
-            <form>
+            <form onSubmit={saveTrade}>
                 <div className="mb-3">
-                    <label htmlFor="Name" className="form-label">Trade Name</label>
+                    <label htmlFor="Name" className="form-label">Trade Code</label>
                     <input type="text" className="form-control" id="exampleInputtext" />
                 </div>
 
@@ -55,11 +65,8 @@ function AddNewTrade() {
 
                 <div className="mb-3">
                     <label htmlFor="StopLoss" className="form-label"> Strategy</label>
-                    <input type="text" className="form-control" id="exampleInputtext" />
-                    <Link to="/Strategies">add</Link>
                 </div>
-
-                <div>                
+                <div className="mb-3">
                     <select value={setStrategies} onChange={handleChange}>
                         <option value="">Select a strategy</option>
                         {strategies.map(strategy => (
@@ -68,6 +75,12 @@ function AddNewTrade() {
                             </option>
                         ))}
                     </select>
+                    <Link to="/Strategies">Add new</Link>
+                </div>
+
+                <div className="mb-3">
+                    <label htmlFor="exampleFormControlFile1" className="form-label">Upload Image</label>
+                    <input type="file" className="form-control-file" id="exampleFormControlFile1" />
                 </div>
 
                 <div className="mb-3">

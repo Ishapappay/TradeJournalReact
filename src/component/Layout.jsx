@@ -48,6 +48,9 @@ const Layout = () => {
                         <li>
                             <Link to='/Portfolio'>Portfolio</Link>
                         </li>
+                        <li>
+                            <Link to='/Settings'>Settings</Link>
+                        </li>
                     </ul>
                 </div>
 

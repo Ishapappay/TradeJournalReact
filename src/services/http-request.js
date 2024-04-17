@@ -13,8 +13,8 @@ export async function post(url,data){
     return response;
 }
 
-export async function put(url,data){
-    var response = await fetch(baseUrl+url,
+export async function put(url,id,data){
+    var response = await fetch(baseUrl+url+'/'+id,
     {                
         method: 'PUT', headers: {
             'Authorization':`Bearer ${localStorage.getItem('Token')}`,
@@ -25,15 +25,14 @@ export async function put(url,data){
     return response;
 }
 
-export async function get(url,data){
-    var response = await fetch(baseUrl+url,
+export async function get(url,id){
+    var response = await fetch(baseUrl+url+'/'+id,
     {                
         method: 'GET', headers: {
             'Authorization':`Bearer ${localStorage.getItem('Token')}`,
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(data)
-    });
+     });
     return response;
 }
 
@@ -44,19 +43,18 @@ export async function getAll(url){
             'Authorization':`Bearer ${localStorage.getItem('Token')}`,
             "Content-Type": "application/json"
         },
-        body: JSON.stringify()
-    });
+     });
     return response;
 }
 
-export async function delet(url,data){
-    var response = await fetch(baseUrl+url,
+export async function deleteItem(url,id){
+    var response = await fetch(baseUrl+url+'/'+id,
     {                
         method: 'DELETE', headers: {
             'Authorization':`Bearer ${localStorage.getItem('Token')}`,
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(data)
+//body: JSON.stringify(data)
     });
     return response;
 }

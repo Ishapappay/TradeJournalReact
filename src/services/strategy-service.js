@@ -1,4 +1,4 @@
-import {get,delet, getAll, post, put } from './http-request';
+import {get,deleteItem, getAll, post, put } from './http-request';
 import customToaster from '../helper/custom-toaster';
 
 export async function createStrategy(data) {
@@ -30,7 +30,7 @@ export async function getAllStrategy() {
 }
 
 export async function deleteStrategy(data) {
-    var response = await delet('Strategies', data);
+    var response = await deleteItem('Strategies', data);
     if (response.status != 200) {
         customToaster.error('Something wrong in strategy deletion');
         return

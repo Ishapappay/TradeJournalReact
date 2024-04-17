@@ -20,7 +20,7 @@ function Login(props) {
                 let result = await res.json()
                 localStorage.setItem('Token', result.token);
                 props.ChangeIslogin(true);
-                navigate("/Trades")
+                navigate("/Dashboard")
             } else {
                 alert("invalid user name or password");
             }

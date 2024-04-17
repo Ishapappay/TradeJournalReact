@@ -11,8 +11,9 @@ import Portfolio from './component/Portfolio';
 // import NewTrade  from './component/NewTrade';
 import Trades from './component/Trades';
 import AddNewTrade from './component/AddNewTrade';
-
-
+import { Settings } from './component/Settings';
+import Dashboard from './component/Dashboard';
+import TradeSearch from './component/TradeSearch';
 
 function App() {
 
@@ -32,6 +33,9 @@ function App() {
             <Route path='/Trades' Component={Trades}></Route>
             <Route path='/AddNewTrade' Component={AddNewTrade}></Route>
             <Route path='/Portfolio' Component={Portfolio}></Route>
+            <Route path='/settings' Component={Settings}></Route>
+            <Route path='/dashboard' Component={Dashboard}></Route>
+            <Route path='/tradeSearch' Component={TradeSearch}></Route>
           </Route>
           </Route>
           <Route path='/Register' Component={Register}></Route>
