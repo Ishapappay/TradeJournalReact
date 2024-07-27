@@ -3,7 +3,7 @@ import customToaster from '../helper/custom-toaster';
 
 export async function createStrategy(data) {
     var response = await post('Strategies', data);
-    if (response.status != 200) {
+    if (response.status !== 200) {
         customToaster.error('Something wrong in strategy creation');
         return
     }
@@ -13,7 +13,7 @@ export async function createStrategy(data) {
 
 export async function getStrategy(data) {
     var response = await get('Strategies', data);
-    if (response.status != 200) {
+    if (response.status !== 200) {
         customToaster.error('Something wrong');
         return
     }
@@ -22,7 +22,7 @@ export async function getStrategy(data) {
 
 export async function getAllStrategy() {
     var response = await getAll('Strategies');
-    if (response.status != 200) {
+    if (response.status !== 200) {
         customToaster.error('Something went wrong');
         return
     }
@@ -31,7 +31,7 @@ export async function getAllStrategy() {
 
 export async function deleteStrategy(data) {
     var response = await deleteItem('Strategies', data);
-    if (response.status != 200) {
+    if (response.status !== 200) {
         customToaster.error('Something wrong in strategy deletion');
         return
     }
@@ -39,9 +39,9 @@ export async function deleteStrategy(data) {
     return response;
 }
 
-export async function updateStrategy(data) {
-    var response = await put('Strategies', data);
-    if (response.status != 200) {
+export async function updateStrategy(id,data) {
+    var response = await put('Strategies',id, data);
+    if (response.status !== 200) {
         customToaster.error('Something wrong in strategy updation');
         return
     }

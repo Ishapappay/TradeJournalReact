@@ -69,3 +69,12 @@
     transform: rotate(360deg);
   }
 }
+.hide-column {
+  display: none;
+}
+.form-bg{
+  background-color: #0ffff0; 
+}
+.custom-bg{
+  background-color: #0D1346; 
+}
