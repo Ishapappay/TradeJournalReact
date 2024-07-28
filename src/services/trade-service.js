@@ -1,9 +1,10 @@
-import { delet, get, getAll, post, put } from './http-request';
+import { deleteItem, get, getAll, post, put } from './http-request';
 import customToaster from '../helper/custom-toaster';
 
 export async function createTrade(data) {
+    debugger
     var response = await post('Trade', data);
-    if (response.status != 200) {
+    if (response.status !== 200) {
         customToaster.error('Something wrong in trade creation');
         return
     }
@@ -12,39 +13,41 @@ export async function createTrade(data) {
 }
 
 export async function getTrade(data) {
+    
     var response = await get('Trade', data);
-    if (response.status != 200) {
+    if (response.status !== 200) {
         customToaster.error('Something went wrong');
         return
     }
-    return response;
+    return await response.json();
 }
 
 export async function getAllTrade() {
     var response = await getAll('Trade');
-    if (response.status != 200) {
+    if (response.status !== 200) {
         customToaster.error('Something went wrong ');
         return
     }
-    return response;
+    return await response.json();
 }
 
-export async function updateTrade(data) {
-    var response = await put('Trade', data);
-    if (response.status != 200) {
+export async function updateTrade(id,data) {
+    debugger
+    var response = await put('Trade',id, data);
+    if (response.status !== 200) {
         customToaster.error('Something wrong in trade updation');
         return
     }
     customToaster.success('Trade updated sucessfully');
-    return response;
+    return await response.json();
 }
 
 export async function deleteTrade(data) {
-    var response = await delet('Trade', data);
-    if (response.status != 200) {
+    var response = await deleteItem('Trade', data);
+    if (response.status !== 200) {
         customToaster.error('Something wrong in trade deletion');
         return
     }
     customToaster.success('Trade deleted sucessfully');
-    return response;
+    return await response.json();
 }
